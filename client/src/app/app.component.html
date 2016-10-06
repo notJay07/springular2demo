@@ -1,0 +1,93 @@
+<div>
+    <h1>Result</h1>
+        <table border="1">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let paper of book">
+                <td>{{ paper.title }}</td>
+                <td>{{ paper.author }}</td>
+                <td>{{ paper.description }}</td>
+                <td>{{ paper.price }}</td>
+            </tr>
+        </table>
+</div>
+
+<br />
+
+<div>
+    <h1>ADD FUNCTION</h1>
+    <form (ngSubmit)="addBooks(addTitle.value,addAuthor.value,addDescrip.value,addPrice.value)" #bookForm="ngForm">
+        <table border="1">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td><input type='text' #addTitle name="title" [hidden]="addTitle.valid || addTitle.pristine" class="alert alert-danger" required></td>
+                <td><input type='text' #addAuthor name="author" [hidden]="addAuthor.valid || addAuthor.pristine" class="alert alert-danger" required></td>
+                <td><input type='text' #addDescrip name="descrip" [hidden]="addDescrip.valid || addDescrip.pristine" class="alert alert-danger" required></td>
+                <td><input type='text' #addPrice name="price" [hidden]="addPrice.valid || addPrice.pristine" class="alert alert-danger" required></td>
+            </tr>
+        </table>
+<br />
+        <button type="submit">Add Book</button>
+    </form>
+</div>
+
+<br />
+
+<div>
+    <h1>DELETE FUNCTION</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Delete</th>
+            </tr>
+            <tr *ngFor="let paper of book">
+                <td>{{ paper.id }}</td>
+                <td>{{ paper.title }}</td>
+                <td>{{ paper.author }}</td>
+                <td>{{ paper.description }}</td>
+                <td>{{ paper.price }}</td>
+                <button type='delete' (click)='removeBook(paper.id)'>Select</button>
+            </tr>
+        </table>
+<br />
+    <button type='delete' (click)='deleteALL()'>Delete All</button>
+</div>
+
+<br />
+
+<div>
+    <h1>UPDATE FUNCTION</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let paper of book">
+                <td>{{ paper.id }}</td>
+                <td><input type='text' #addTitle name="title" [hidden]="addTitle.valid || addTitle.pristine" class="alert alert-danger" required [(ngModel)]="paper.title">{{ paper.title }}</td>
+                <td><input type='text' #addAuthor name="author" [hidden]="addAuthor.valid || addAuthor.pristine" class="alert alert-danger" required [(ngModel)]="paper.author">{{ paper.author }}</td>
+                <td><input type='text' #addDescrip name="descrip" [hidden]="addDescrip.valid || addDescrip.pristine" class="alert alert-danger" required [(ngModel)]="paper.description">{{ paper.description }}</td>
+                <td><input type='text' #addPrice name="price" [hidden]="addPrice.valid || addPrice.pristine" class="alert alert-danger" required [(ngModel)]="paper.price">{{ paper.price }}</td>
+            </tr>
+        </table>
+
+<br />
+        <button type='Update' >Select</button>
+
+</div>
